@@ -7,20 +7,30 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'wallybuds🛒🎧'
+BOT_NAME = 'wallybuds'
 
-SPIDER_MODULES = ['basic_scrapy_spider.spiders']
-NEWSPIDER_MODULE = 'basic_scrapy_spider.spiders'
+SPIDER_MODULES = ['scrapy-spot.spiders']
+NEWSPIDER_MODULE = 'scrapy-spot.spiders'
+
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'quotes_js_scraper (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+
+
+SCRAPEOPS_API_KEY = 'bb10ccbd-8ea0-4f28-b7be-bae72dc31ce1'
+SCRAPEOPS_PROXY_ENABLED = True
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapeops_scrapy_proxy_sdk.scrapeops_scrapy_proxy_sdk.ScrapeOpsScrapyProxySdk': 725,
+}
+
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 1
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
